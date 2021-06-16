@@ -27,6 +27,7 @@ return [
       , ['label' => 'Histórico-Precios', 'url' => ['/historico-precios']]
       , ['label' => 'Ofertas', 'url' => ['/Oferta']] //ATENCION: ese plural que falta!!
       , ['label' => 'Seguimientos-Usuarios', 'url' => ['/seguimientos-usuarios']]
+      , ['label' => 'Regiones', 'url' => ['/regiones']]
       , ['label' => 'Tiendas', 'url' => ['/tiendas']]
       , ['label' => 'Tiendas-Etiquetas ', 'url' => ['/tiendas-etiquetas']]
       , ['label' => 'User', 'url' => ['/user']]//ATENCION: Porque dos controladores de usuario?
