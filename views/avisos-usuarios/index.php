@@ -23,8 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if (Yii::$app->user->can('update')) { ?>
         <?= Html::a('Crear Aviso', ['create'], ['class' => 'btn btn-success']) ?>
-
-    <?php }
+    <?php } 
     $view_use = '';
     if (!Yii::$app->user->can('update')) {
         $view_use = '{view}';

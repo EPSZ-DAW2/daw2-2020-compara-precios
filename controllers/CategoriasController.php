@@ -307,6 +307,7 @@ class CategoriasController extends Controller
         }
 
         $listaCategorias = Categorias::find()->all();
+        $nombre_categorias= [];//DTR: Cuando no hay ningún resultado falla sin iniciar la variable.
         for($i=0; $i<count($listaCategorias); $i++){
             $nombre_categorias[$listaCategorias[$i]['id']]=$listaCategorias[$i]['nombre'];
         }
