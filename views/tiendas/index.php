@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Crear una tienda', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Ver propietarios', ['propietarios'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Región', ['regiones/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

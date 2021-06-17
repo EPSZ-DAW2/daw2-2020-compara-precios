@@ -50,6 +50,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'clase_aviso',
                 'filter' => AvisosUsuarios::getClaseAviso(),
                 'format' => 'raw',
+                'value' => function ($model) {
+                    switch ($model->clase_aviso) {
+                        case 'A':
+                            return 'Aviso';
+                        case 'N':
+                            return 'Notificación';
+                        case 'D':
+                            return 'Denuncia';
+                        case 'C':
+                            return 'Consulta';
+                        case 'B':
+                            return 'Bloqueo';
+                        case 'M':
+                            return 'Mesaje';
+                    }
+                },
                 'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
             ],
             'texto:ntext',
@@ -66,6 +82,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
             ],
             'comentario_id',
+            [
+                'attribute' => 'comentario_id',
+                'label' => 'Comentario',
+                'format' => 'raw',
+                'value' => function (AvisosUsuarios $model) {
+                    if ($model->comentario_id != null) {
+                        return $model->comentario_id;
+                    } else {
+                        return 'Sin comentario';
+                    }
+                },
+            ],
             [
                 'attribute' => 'fecha_lectura',
                 'label' => 'Leído',
@@ -87,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return $model->fecha_lectura;
                     } else {
                         return '<i class="bi bi-x-square-fill text-danger" style="font-size: 2rem;"></i>';
-                    } //http://localhost:8888/ComparaPrecios/daw2-2020-compara-precios/web/avisos-usuarios/view?id=4
+                    }
                 },
             ],
             [
@@ -95,13 +123,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view} {update} {delete} {leido} {aceptado}',
                 'buttons' => [
                     'leido' => function ($url, $model, $key) {
-                        return Html::a ( '<i class="bi bi-eye-fill"></i>', ['AvisosUsuarios/MarcarComoLeido', 'id' => $model->id] );
-                    },
-                    'aceptado' => function ($url, $model) {
-                        return Html::a('<i class="bi bi-check-square-fill"></i>', $url, [
-                            'title' => Yii::t('yii', 'Marcar como aceptado'),
+                        return Html::a('<i class="bi bi-eye-fill" title="Marcar como leído"></i>', ['leido', 'id' => $model->id], [
+                            'data' => [
+                                'method' => 'post',
+                            ],
                         ]);
-                    }
+                    },
+                    'aceptado' => function ($url, $model, $key) {
+                        return Html::a('<i class="bi bi-check-square-fill" title="Marcar como aceptado"></i>', ['aceptado', 'id' => $model->id], [
+                            'data' => [
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
                 ],
             ]
         ],

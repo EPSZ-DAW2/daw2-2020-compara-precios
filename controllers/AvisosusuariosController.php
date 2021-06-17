@@ -165,7 +165,7 @@ class AvisosUsuariosController extends Controller
         $model->save();
     }
 
-    public function actionMarcarComoLeido($id)
+    public function actionLeido($id)
     {
         $model = $this->findModel($id);
         $model->fecha_lectura = new Expression('NOW()');
@@ -176,13 +176,14 @@ class AvisosUsuariosController extends Controller
         }
     }
 
-    public function actionMarcarComoAceptado($id)
+    public function actionAceptado($id)
     {
         $model = $this->findModel($id);
         $model->fecha_aceptado = new Expression('NOW()');
         
         if ($model->load(Yii::$app->request->post()))
         {
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
     }

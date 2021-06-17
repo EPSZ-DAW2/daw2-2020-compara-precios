@@ -49,4 +49,14 @@ class HistoricoPrecios extends \yii\db\ActiveRecord
             'precio' => 'Precio',
         ];
     }
+
+    public function getTiendas()
+    {
+        return $this->hasOne(Tiendas::className(), ['id' => 'tienda_id']);
+    }
+
+    public function getArticulos()
+    {
+        return $this->hasOne(Articulos::className(), ['id' => 'articulo_id']);
+    }
 }

@@ -28,8 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'articulo_id',
-            'tienda_id',
+            [
+                'attribute' => 'articulos.nombre',
+                'label' => 'Artículo',
+                'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
+            ],
+            [
+                'attribute' => 'tiendas.nombre_tienda',
+                'label' => 'Tienda',
+                'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
+            ],
             'fecha:date',
             'precio:currency',
 

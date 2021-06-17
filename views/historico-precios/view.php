@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Borrar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Seguro que desea eliminar este histórico de precio?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,10 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'articulo_id',
-            'tienda_id',
-            'fecha',
-            'precio',
+            [
+                'attribute' => 'articulos.nombre',
+                'label' => 'Artículo',
+                'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
+            ],
+            [
+                'attribute' => 'tiendas.nombre_tienda',
+                'label' => 'Tienda',
+                'filterInputOptions' => ['prompt' => 'Todos', 'class' => 'form-control']
+            ],
+            'fecha:date',
+            'precio:currency',
         ],
     ]) ?>
 
